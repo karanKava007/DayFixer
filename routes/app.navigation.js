@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home';
+import { View, StyleSheet } from 'react-native';
+import RecipesScreen from '../screens/Home';
+import CategoriesScreen from '../screens/Categories';
+import FavoritesScreen from '../screens/Favorites';
 import SettingsScreen from '../screens/Setting';
-import CategoriesScreen from '../screens/Account';
-import StatisticsScreen from '../screens/Search';
-import CalendarScreen from '../screens/Dashboard';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator();
@@ -14,15 +14,13 @@ const AppBottomRoute = () => {
   return (
     <Tab.Navigator
       initialRouteName='Home'
-
       screenOptions={{
         tabBarActiveTintColor: 'orange',
         tabBarInactiveTintColor: '#d3d3d3',
-        tabBarStyle: { backgroundColor: 'white', borderTopLeftRadius: 30, borderTopRightRadius: 30 },
+        tabBarStyle: { backgroundColor: 'white', borderTopLeftRadius: 30, borderTopRightRadius: 30, height: 60, elevation: 5 },
         tabBarLabelStyle: { display: 'none' },
         tabBarCentered: true,
         tabBarIconStyle: { justifyContent: 'center', alignItems: 'center' },
-
         headerStyle: {
           backgroundColor: 'white',
         },
@@ -35,32 +33,12 @@ const AppBottomRoute = () => {
       }}
     >
       <Tab.Screen
-        name="Statistics"
-        component={StatisticsScreen}
+        name="Recipes"
+        component={RecipesScreen}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="bar-chart" color={color} size={IconSize} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Calendar"
-        component={CalendarScreen}
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons name="date-range" color={color} size={IconSize} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons name="home" color={color} size={IconSize} />
+            <MaterialIcons name="restaurant-menu" color={color} size={IconSize} />
           ),
         }}
       />
@@ -70,7 +48,17 @@ const AppBottomRoute = () => {
         options={{
           tabBarLabel: '',
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="folder" color={color} size={IconSize} />
+            <MaterialIcons name="category" color={color} size={IconSize} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="favorite" color={color} size={IconSize} />
           ),
         }}
       />
@@ -87,5 +75,13 @@ const AppBottomRoute = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+});
 
 export default AppBottomRoute;
