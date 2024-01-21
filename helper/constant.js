@@ -1,3 +1,5 @@
-appColor = 'orange'
+const Constant = {
+    primaryColor: 'red'
+}
 
-export default { appColor }
+export default Constant
