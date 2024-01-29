@@ -1,5 +1,5 @@
 const Constant = {
-    primaryColor: 'red'
+    primaryColor: 'orange'
 }
 
 export default Constant
